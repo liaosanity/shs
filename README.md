@@ -3,7 +3,7 @@
 # Overview
 SHS, a simple http service framework, which separates the network layer highly from the business layer code, Developers would have your own powerful HTTP services simply by implementing the business code, The network layer using non-blocking IO & Epoll all the way through, provides high concurrency and low latency network services easily.
 
-# SHS supports several network service models, as follow:
+SHS supports several network service models, as follow:
 * Multi-process single-threaded model, with the SO_REUSEPORT option, there are multiple worker-process listening the same socket-port, The kernel'll determine which available socket listener (and by implication, which worker) gets the connection, This can reduce lock contention between workers accepting new connections, and improve performance on multicore systems.
 ![image](https://github.com/liaosanity/shs/raw/master/images/multiprocess.png)
 * Single-process multi-threaded model, The main thread deal with all of the network things, meanwhile tasker thread deal with the business logic, Threads are notified to work by pipe, which being pre-registered in the Epoll.

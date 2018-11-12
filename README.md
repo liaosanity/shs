@@ -42,11 +42,11 @@ cd shs_test/tools/
 ./serverctl start
 WARN: If you want to change '/home/test', do not forget to change them all in thes 'tools/install.sh & etc/xxx' files.
 ```
-4) If you run a http request via chrome like this (http://192.168.1.11:7007/shs_test/test?uid=Jeremy&sid=123456), Then you'll get these results as bellow:
+4) If you run a http request via chrome like this (http://192.168.1.11:7007/shs_test/test?uid=Jeremy&sid=123456), Then you'll get these results.
 ![image](https://github.com/liaosanity/shs/raw/master/images/helloworld.png)
 
 # A clustered service example
 There is a sub-dir name proxy_test in the examples, that'll transfer the GET/POST request to shs_test, then the response will return by the way request comes. That's so simple, a proxy_test & shs_test can set up a upstream and downstream clustered service.
 ![image](https://github.com/liaosanity/shs/raw/master/images/ud.png)
-If you run a http request via chrome like this (http://192.168.1.11:6007/proxy_test/test?uid=Jeremy&sid=123456), Then you'll get these results as bellow:
+If you run a http request via chrome like this (http://192.168.1.11:6007/proxy_test/test?uid=Jeremy&sid=123456), Then you'll get these results.
 ![image](https://github.com/liaosanity/shs/raw/master/images/proxy.png)

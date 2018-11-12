@@ -5,9 +5,11 @@ SHS, a simple http service framework, which separates the network layer highly f
 
 SHS supports several network service models, as follow:
 1) Multi-process single-threaded model, with the SO_REUSEPORT option, there are multiple worker-process listening the same socket-port, The kernel'll determine which available socket listener (and by implication, which worker) gets the connection, This can reduce lock contention between workers accepting new connections, and improve performance on multicore systems.
+
 ![image](https://github.com/liaosanity/shs/raw/master/images/multiprocess.png)
 
 2) Single-process multi-threaded model, The main thread deal with all of the network things, meanwhile tasker thread deal with the business logic, Threads are notified to work by pipe, which being pre-registered in the Epoll.
+
 ![image](https://github.com/liaosanity/shs/raw/master/images/singleprocess.png)
 
 # Building
@@ -24,6 +26,7 @@ SHS supports several network service models, as follow:
 
 # A quick start example
 There is a sub-dir name shs_test in the examples, which is a simple 'helloworld' http service, you only have to implement a few lines of code, then you have finished an http service application.
+
 ![image](https://github.com/liaosanity/shs/raw/master/images/shs_test.png)
 
 1) Run these cmd to compile and package as bellow:
@@ -50,6 +53,7 @@ WARN: If you want to change '/home/test', do not forget to change them all in th
 
 # A clustered service example
 There is a sub-dir name proxy_test in the examples, that'll transfer the GET/POST request to shs_test, then the response will return by the way request comes. That's so simple, a proxy_test & shs_test can set up a upstream and downstream clustered service.
+
 ![image](https://github.com/liaosanity/shs/raw/master/images/ud.png)
 
 If you run a http request via chrome like this (http://192.168.1.11:6007/proxy_test/test?uid=Jeremy&sid=123456), Then you'll get these results.

@@ -1,0 +1,9 @@
+BIN_NAME=shs_test
+LIB_NAME=libshs_test.so
+MOD_NAME=shs_test
+
+MOD_VERSION=1.0.0
+
+SHS_VERSION=1.0.0
+BOOST_VERSION=1.50.0
+

@@ -1,0 +1,28 @@
+slog.appender.stdout=ConsoleAppender
+slog.appender.stdout.Threshold=ALL
+slog.appender.stdout.ImmediateFlush=TRUE
+slog.appender.stdout.layout = PatternLayout
+slog.appender.stdout.layout.ConversionPattern = %D:%d{%q} [%-5p][%5P:%14t] <%F:%L> %c %x - %m%n
+
+slog.appender.file=FileAppender
+slog.appender.file.File=/home/test/proxy_test/log/local.log
+slog.appender.file.ImmediateFlush=TRUE
+slog.appender.file.layout = PatternLayout
+slog.appender.file.layout.ConversionPattern = %D:%d{%q} [%-5p][%5P:%14t] <%F:%L> %c %x - %m%n
+
+slog.appender.rollingfile=RollingFileAppender
+slog.appender.rollingfile.File=/home/test/proxy_test/log/local.log
+slog.appender.rollingfile.MaxFileSize=100000
+slog.appender.rollingfile.ImmediateFlush=TRUE
+slog.appender.rollingfile.layout = PatternLayout
+slog.appender.rollingfile.layout.ConversionPattern = %D:%d{%q} [%-5p][%5P:%14t] <%F:%L> %c %x - %m%n
+
+slog.appender.dailyrollingfile=DailyRollingFileAppender
+slog.appender.dailyrollingfile.File=/home/test/proxy_test/log/local.log
+slog.appender.dailyrollingfile.Schedule=DAILY
+slog.appender.dailyrollingfile.ImmediateFlush=TRUE
+slog.appender.dailyrollingfile.layout = PatternLayout
+slog.appender.dailyrollingfile.layout.ConversionPattern = %D:%d{%q} [%-5p][%5P:%14t] <%F:%L> %c %x - %m%n
+slog.appender.dailyrollingfile.maxbackupindex= 2
+
+slog.rootLogger=DEBUG, stdout, dailyrollingfile

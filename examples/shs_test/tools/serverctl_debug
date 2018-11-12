@@ -1,0 +1,54 @@
+#!/bin/sh
+
+ARGV="$@"
+
+SLEEPTIME=5
+
+SERVER_PATH=$(cd $(dirname $0)/..; pwd)
+SERVER_PID=$SERVER_PATH/proc/shs_test.pid
+SERVER_PID_OLD=$SERVER_PATH/proc/shs_test.pid.old
+STATUS_FILE=$SERVER_PATH/proc/status
+
+export LD_LIBRARY_PATH=$SERVER_PATH/lib:$LD_LIBRARY_PATH
+SERVER_CTL="$SERVER_PATH/bin/shs_test 
+-mod_path=$SERVER_PATH/module/ 
+-mod_conf=$SERVER_PATH/etc/ 
+-pid_file=$SERVER_PID 
+-http_port=7007
+-num_processes=1
+-timeout=4500 
+-status_file=$STATUS_FILE"
+
+ERROR=0
+
+if [ "x$ARGV" = "x" ] ; then
+    ARGV="-h"
+fi
+
+startserver()
+{
+    for i in 1 2 3
+    do
+        $SERVER_CTL
+        ERROR=$?
+        if [ $ERROR = 0 ] ; then
+            break;
+        fi
+    sleep $SLEEPTIME
+    done
+}
+
+case $ARGV in
+start)
+    startserver
+    ;;
+stop)
+    kill `cat $SERVER_PID`
+    ;;
+*)
+    $SERVER_CTL $ARGV
+    ERROR=$?
+esac
+
+exit $ERROR
+

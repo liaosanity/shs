@@ -1,0 +1,41 @@
+#pragma once
+
+namespace shs 
+{ 
+namespace downstream 
+{
+
+enum ErrCode 
+{
+    OK = 0,
+    E_BAD_REQUEST,
+    E_CONN_REFUSED,
+    E_CONN_FAILED,
+    E_CONN_CLOSED,
+    E_BAD_RESPONSE,
+    E_REQUEST_TIMEOUT,
+    E_CREATESERVER_FAIL,
+    E_NO_QUERYCHANCE,
+    E_SELECT_SERVER_FAIL,
+    E_SELECT_HOST_FAIL,
+    E_REACH_SERVER_RETRY_LIMIT,
+    E_REACH_HOST_RETRY_LIMIT,
+    E_OTHER_FAIL,
+
+    E_HTTP_INVALID_HEADER = 1001,
+    E_HTTP_INVALID_BODY = 1002,
+    E_HTTP_READ_TIMEOUT = 1003,
+    E_HTTP_READ_EOF = 1004,
+    E_HTTP_WRITE_TIMEOUT = 1005,
+    E_HTTP_WRITE_EOF = 1006,
+    E_HTTP_CONNECT_TIMEOUT = 1007,
+    E_HTTP_CONNECT_FAIL = 1008,
+    E_HTTP_INVALID_SOCKET = 1009,
+    E_HTTP_CALLER_ERROR = 1010,
+
+    E_SYNC_TIMEOUT = 2001,
+    E_SYNC_OTHER_FAIL = 2002,
+};
+
+} // namespace downstream
+} // namespace shs

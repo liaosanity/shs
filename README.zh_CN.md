@@ -1,6 +1,7 @@
 SHS，一个简单的http服务框架，其将网络层与业务层代码高度分离，开发者仅需实现业务代码，即可拥有强大的http服务程序，网络层使用异步IO及Epoll事件驱动模式提供高并发、低延迟网络服务。
 
 该框架支持以下几种网络服务模型：
+
 一、多进程单线程模型（进程数可配置)，利用SO_REUSEPORT特性，允许多个进程同时监听一个端口，当有新连接请求到来，由内核决定哪个进程负责处理，从而避免多进程同时枪锁规避惊群带来性能损耗问题，整体架构如下：
 
 ![image](https://github.com/liaosanity/shs/raw/master/images/multiprocess.png)
@@ -44,7 +45,7 @@ cd shs_test/tools/
 ./serverctl start
 注意：如果你想改变部署路径'/home/test'，则记得将tools/install.sh、etc/*里的所有文件包含'/home/test'改为你要的目录。
 ```
-4) 在chrome里输入命令 (http://192.168.1.11:7007/shs_test/test?uid=Jeremy&sid=123456)，便可与shs_test进行交互，效果如下图：
+4) 在chrome里输入命令 (http://192.168.1.11:7007/shs_test/test?uid=Jeremy&sid=123456), 便可与shs_test进行交互，效果如下图：
 
 ![image](https://github.com/liaosanity/shs/raw/master/images/helloworld.png)
 
@@ -53,7 +54,7 @@ examples目录下有个proxy_test工程，一个简单的代理demo，可以向s
 
 ![image](https://github.com/liaosanity/shs/raw/master/images/ud.png)
 
-在chrome里输入命令 (http://192.168.1.11:6007/proxy_test/test?uid=Jeremy&sid=123456)，便可与proxy_test进行交互，其会把请求透传给下游服务shs_test，并依次原路将结果返回给client，效果如下图：
+在chrome里输入命令 (http://192.168.1.11:6007/proxy_test/test?uid=Jeremy&sid=123456), 便可与proxy_test进行交互，其会把请求透传给下游服务shs_test，并依次原路将结果返回给client，效果如下图：
 
 ![image](https://github.com/liaosanity/shs/raw/master/images/proxy.png)
 

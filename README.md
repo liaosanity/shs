@@ -25,9 +25,13 @@ SHS supports several network service models, as follow:
 There is a sub-dir name shs_test in the examples, which is a simple 'helloworld' http service, you only have to implement a few lines of code, then you have finished an http service application.
 ![image](https://github.com/liaosanity/shs/raw/master/images/shs_test.png)
 1) Run these cmd to compile and package as bellow:
+```
 make clean && make -j && make package
+```
 2) Run your application on a server like 192.168.1.11:
+```
 scp packages/shs_test-1.0.0.tgz 192.168.1.11:/tmp
+```
 3) In case you set up your application under '/home/test' dir, just run these cmd as bellow:
 ```
 cd /home/test
@@ -38,11 +42,11 @@ cd shs_test/tools/
 ./serverctl start
 WARN: If you want to change '/home/test', do not forget to change them all in thes 'tools/install.sh & etc/xxx' files.
 ```
-4) If you run a http request via chrome like this 'http://192.168.1.11:7007/shs_test/test?uid=Jeremy&sid=123456', Then you'll get these results as bellow:
+4) If you run a http request via chrome like this (http://192.168.1.11:7007/shs_test/test?uid=Jeremy&sid=123456), Then you'll get these results as bellow:
 ![image](https://github.com/liaosanity/shs/raw/master/images/helloworld.png)
 
 # A clustered service example
 There is a sub-dir name proxy_test in the examples, that'll transfer the GET/POST request to shs_test, then the response will return by the way request comes. That's so simple, a proxy_test & shs_test can set up a upstream and downstream clustered service.
 ![image](https://github.com/liaosanity/shs/raw/master/images/ud.png)
-If you run a http request via chrome like this 'http://192.168.1.11:6007/proxy_test/test?uid=Jeremy&sid=123456', Then you'll get these results as bellow:
+If you run a http request via chrome like this (http://192.168.1.11:6007/proxy_test/test?uid=Jeremy&sid=123456), Then you'll get these results as bellow:
 ![image](https://github.com/liaosanity/shs/raw/master/images/proxy.png)
